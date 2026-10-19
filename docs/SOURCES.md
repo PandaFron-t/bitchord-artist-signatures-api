@@ -24,7 +24,7 @@ Two curated candidate URLs in the Worker refer to [Lady Gaga](https://commons.wi
 
 ## Copyright and project licensing
 
-This repository currently ships without a selected license for **its own source code**. Do not assume the external Signature Archive's license covers this JavaScript. Pick a project license after verifying the origin and permissions for any included code. This guide is not legal advice.
+The source code in this repository is distributed under the [MIT License](../LICENSE). This license covers the original project code and documentation only, **not** external images, upstream trademarks, or third-party rights. This guide is not legal advice.
 
 ## Independence and AI assistance
 
