@@ -1,0 +1,13 @@
+{
+  "name": "bitchord-artist-signatures-api",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Independent, self-hosted Cloudflare Worker artist-signature API compatible with BitChord",
+  "scripts": {
+    "test": "node tests/smoke.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
