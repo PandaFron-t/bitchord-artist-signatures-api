@@ -18,6 +18,23 @@ A lightweight artist autograph lookup API, created for **BitChord v1.8.1+**. It 
 - 🎨 Returns existing image URLs rather than generating fake autographs.
 - 🛡️ Returns an empty list when no suitable image is found.
 
+## 🎧 Use now — BitChord (no deployment required)
+
+**Community API base URL:**
+
+```text
+https://bitchord-signature.pandanimation15.workers.dev
+```
+
+In BitChord, enable **Artist Signatures** under Settings and enter the URL above in the signature API URL field. The app tests `/v1/health` when you save it.
+
+**Try an artist:**
+[`2Pac`](https://bitchord-signature.pandanimation15.workers.dev/v1/signatures?artist=2Pac) ·
+[`Lady Gaga`](https://bitchord-signature.pandanimation15.workers.dev/v1/signatures?artist=Lady%20Gaga) ·
+[`Michael Jackson`](https://bitchord-signature.pandanimation15.workers.dev/v1/signatures?artist=Michael%20Jackson)
+
+> **Community endpoint:** Offered as a best-effort free service, without availability guarantees. This URL is managed by the project maintainer and uses their Cloudflare Worker quota. Please use responsibly. For greater control, host your own Worker using the source below. No artist result is guaranteed.
+
 ## 🚀 Deploy in a browser
 
 1. Open [Cloudflare Workers & Pages](https://dash.cloudflare.com/) and create a Worker using **Start with Hello World**.
