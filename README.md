@@ -1,59 +1,88 @@
-# 🎤 Artist Signatures API
+<div align="center">
 
-<p align="center">
-  <strong>Signatures for BitChord, powered by public data.</strong>
-</p>
+# ✍️ Artist Signatures API
 
-![Cloudflare](https://img.shields.io/badge/Cloudflare-Workers-F38020?logo=cloudflare&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES%20Modules-F7DF1E?logo=javascript&logoColor=black)
-![BitChord](https://img.shields.io/badge/BitChord-Compatible-8B5CF6)
+**Assinaturas de artistas no BitChord — com uma API só sua.**
 
-A lightweight artist autograph lookup API, created for **BitChord v1.8.1+**. It runs on Cloudflare Workers without API keys, npm packages or a database.
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?logo=cloudflare&logoColor=white&style=for-the-badge)](https://workers.cloudflare.com/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES%20Modules-F7DF1E?logo=javascript&logoColor=black&style=for-the-badge)](src/worker.js)
+[![License MIT](https://img.shields.io/badge/Code-MIT-8B5CF6?style=for-the-badge)](LICENSE)
 
-## ✨ Features
+**[Instalar](#-instalação-em-5-minutos) · [Como funciona](#-como-funciona) · [Prévia](#-prévia-no-bitchord) · [API](#-endpoints) · [English](docs/README.en.md)**
 
-- 🎧 Compatible with BitChord's optional artist signature API.
-- 🔎 Searches the community Signature Archive, Wikidata P109 and Wikimedia Commons.
-- ⚡ Uses Cloudflare edge caching where available.
-- 🎨 Returns existing image URLs rather than generating fake autographs.
-- 🛡️ Returns an empty list when no suitable image is found.
+</div>
 
-## 🎧 Use now — BitChord (no deployment required)
+---
 
-**Community API base URL:**
+> [!NOTE]
+> **Projeto independente da comunidade, compatível com [BitChord v1.8.1+](https://github.com/kushagrasinghx/BitChord).** Não é uma funcionalidade oficial, parceria ou endosso do aplicativo.
+
+## 🎧 O projeto
+
+Este Worker fornece ao BitChord URLs de **imagens de assinaturas de artistas** a partir de acervos e dados públicos. Cada usuário instala sua **própria cópia** em uma conta Cloudflare, sem usar a conta ou a cota do desenvolvedor deste projeto.
+
+- **Sem API key:** não pede tokens do BitChord, SoundCloud ou Spotify.
+- **Deploy pelo navegador:** copie um arquivo JavaScript; não precisa instalar ferramentas.
+- **Busca em diferentes fontes:** Signature Archive, Wikidata P109 e Wikimedia Commons.
+- **Cache de resultados:** aproveita o cache do Cloudflare Worker quando disponível.
+- **Sem resultados inventados:** a API retorna uma lista vazia quando não encontra uma imagem adequada.
+
+## 📱 Prévia no BitChord
+
+As capturas de tela reais da integração serão adicionadas aqui, com foco no visual das assinaturas dentro da página de cada artista.
+
+<!-- Quando receber os prints, adicionar assets/preview/ e assets/banner.png.
+     Não reutilizar logos ou screenshots oficiais sem verificar permissão. -->
+
+## 🚀 Instalação em 5 minutos
+
+Tudo pode ser feito no navegador, inclusive pelo celular.
+
+1. Entre no [painel da Cloudflare](https://dash.cloudflare.com/) e vá em **Workers & Pages**.
+2. Clique em **Create** e escolha **Start with Hello World** (o nome da opção pode mudar).
+3. Escolha um nome para o Worker, por exemplo `artist-signatures`, e clique em **Deploy**.
+4. Abra **Edit code**, substitua todo o código de exemplo pelo conteúdo de **[src/worker.js](src/worker.js)** e clique em **Deploy** novamente.
+5. Abra `https://SEU-WORKER.workers.dev/v1/health`. A resposta deverá conter `"ok": true`.
+6. No **BitChord**, abra **Configurações → Assinaturas de artistas**, ative a opção e cole a **URL base** do Worker (sem `/v1/health`).
+
+> [!TIP]
+> Cada pessoa hospeda sua própria instância. **Não é necessário compartilhar senhas, login ou token.** Uma conta gratuita da Cloudflare pode ser suficiente para uso pessoal, sujeita às cotas do serviço.
+
+### Exemplo da URL para configurar no aplicativo
 
 ```text
-https://bitchord-signature.pandanimation15.workers.dev
+https://artist-signatures.SEU-SUBDOMINIO.workers.dev
 ```
 
-In BitChord, enable **Artist Signatures** under Settings and enter the URL above in the signature API URL field. The app tests `/v1/health` when you save it.
+Substitua pelo endereço gerado na **sua conta Cloudflare**. Não copie a URL de outra pessoa.
 
-**Try an artist:**
-[`2Pac`](https://bitchord-signature.pandanimation15.workers.dev/v1/signatures?artist=2Pac) ·
-[`Lady Gaga`](https://bitchord-signature.pandanimation15.workers.dev/v1/signatures?artist=Lady%20Gaga) ·
-[`Michael Jackson`](https://bitchord-signature.pandanimation15.workers.dev/v1/signatures?artist=Michael%20Jackson)
+## 🔎 Como funciona
 
-> **Community endpoint:** Offered as a best-effort free service, without availability guarantees. This URL is managed by the project maintainer and uses their Cloudflare Worker quota. Please use responsibly. For greater control, host your own Worker using the source below. No artist result is guaranteed.
+```text
+BitChord → Seu Cloudflare Worker
+                 │
+                 ├─ Signature Archive (acervo)
+                 ├─ Wikidata (propriedade P109)
+                 └─ Wikimedia Commons (busca complementar)
+                         │
+                         ▼
+                 Imagem encontrada?
+                   Sim → URL da assinatura
+                   Não → signatures: []
+```
 
-## 🚀 Deploy in a browser
+O catálogo do acervo é consultado dinamicamente; o resultado depende das fontes disponíveis. As correspondências automáticas **não equivalem a autenticação de autógrafos**.
 
-1. Open [Cloudflare Workers & Pages](https://dash.cloudflare.com/) and create a Worker using **Start with Hello World**.
-2. Select **Edit code** and replace the sample with [src/worker.js](src/worker.js).
-3. Click **Deploy** and check `https://YOUR-WORKER.workers.dev/v1/health`.
-4. In BitChord: **Settings → Artist Signatures → API URL**. Enter only the Worker base URL.
+## 🧩 Endpoints
 
-No paid Cloudflare plan or local development environment is required for this manual deployment.
+| Rota | Função |
+| :-- | :-- |
+| `GET /v1/health` | Verifica se o Worker responde |
+| `GET /v1/signatures?artist=2Pac` | Busca assinatura pelo nome do artista |
+| `GET /v1/catalog` | Lista apenas artistas do acervo pré-indexado |
+| `GET /` | Informações gerais da API |
 
-## 🔌 Endpoints
-
-| Request | Response |
-|---|---|
-| `GET /v1/health` | Service health |
-| `GET /v1/signatures?artist=2Pac` | Image URLs and metadata when found |
-| `GET /v1/catalog` | Pre-indexed entries only |
-| `GET /` | Service information |
-
-**Example:** `/v1/signatures?artist=2Pac`
+Exemplo ilustrativo de resposta de `/v1/signatures?artist=2Pac`:
 
 ```json
 {
@@ -70,34 +99,45 @@ No paid Cloudflare plan or local development environment is required for this ma
 }
 ```
 
-The exact response can include more fields such as source information and license metadata. This is an illustrative example; availability can change.
+O retorno real pode incluir metadados adicionais. Nem todos os artistas possuem imagens disponíveis.
 
-## 📂 Project structure
+## 🛠️ Desenvolvimento e testes
 
 ```text
-src/worker.js         Cloudflare Worker API
-tests/smoke.mjs       Local mocked endpoint tests
-docs/SOURCES.md       Image sources, rights and credits
-docs/README.en.md     English documentation
-README.md             Project overview
+src/worker.js          API Cloudflare Workers
+tests/smoke.mjs        Testes locais com fontes simuladas
+docs/README.en.md      Documentation in English
+docs/SOURCES.md        Fontes, créditos e direitos de imagem
+README.md              Guia principal
+LICENSE                Licença MIT para o código
 ```
 
-Run tests from the repository root with Node.js 22+: `node tests/smoke.mjs`. These tests simulate upstream services and do not validate actual Cloudflare deployment.
+Para executar os testes com Node.js 22+:
 
-## 🙏 Credits
+```bash
+npm test
+```
 
-- [BitChord](https://github.com/kushagrasinghx/BitChord) — compatible music app; **not an official integration**.
-- [Signature Archive](https://github.com/itsmeadarsh2008/signature-archive) — community artist signature archive.
-- [Wikidata](https://www.wikidata.org/) — artist identity data and signature image property P109.
-- [Wikimedia Commons](https://commons.wikimedia.org/) — source files and license metadata.
-- **ChatGPT (OpenAI)** — AI-assisted development and documentation. Not an official collaboration.
+Os testes usam respostas simuladas, portanto não garantem disponibilidade de Wikidata, Wikimedia Commons ou Cloudflare. **Nenhum segredo é necessário para executar o projeto.**
 
-## ⚖️ Copyright & independence
+## 💜 Fontes e agradecimentos
 
-This repository references external images but does **not** redistribute an image collection. Individual signatures may be subject to separate licenses and rights. Their online availability does not automatically authorize reuse. See [source attribution and licensing notes](docs/SOURCES.md).
+- **[BitChord](https://github.com/kushagrasinghx/BitChord)** — aplicativo que oferece a integração opcional.
+- **[Signature Archive](https://github.com/itsmeadarsh2008/signature-archive)** — acervo comunitário de assinaturas.
+- **[Wikidata](https://www.wikidata.org/)** — identificação de artistas e propriedade [P109](https://www.wikidata.org/wiki/Property:P109).
+- **[Wikimedia Commons](https://commons.wikimedia.org/)** — URLs das imagens e informações sobre licenças.
+- **ChatGPT (OpenAI)** — assistência na implementação e documentação; **não é parceria oficial**.
 
-The code has **no open-source license selected yet**. The upstream archive's CC0 notice does not automatically license this project's code or every third-party image.
+## ⚖️ Licença e aviso
 
-**Independent community project:** not affiliated with or endorsed by BitChord, artists, Wikimedia or OpenAI. Artist/signature matches from public data may be incorrect and are not verified autographs.
+**Código-fonte:** [MIT](LICENSE). **Imagens e nomes de artistas:** permanecem sujeitos aos direitos e licenças das fontes originais; a licença MIT **não se aplica a elas**. Este repositório não distribui um pacote de imagens. Consulte [fontes e atribuição](docs/SOURCES.md) antes de republicar qualquer arquivo.
 
-Made by [PandaFron-t](https://github.com/PandaFron-t) 🐼
+A compatibilidade com BitChord **não implica afiliação** ao projeto, aos artistas, à Wikimedia ou à OpenAI. Os resultados são apresentados *como encontrados* e podem conter erros.
+
+---
+
+<div align="center">
+
+Feito por **[PandaFron-t](https://github.com/PandaFron-t)** · 🐼
+
+</div>
