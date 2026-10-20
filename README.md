@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/BannerAPI.png" alt="Artist Signatures API — banner concept; real BitChord screenshots coming soon" width="100%" />
+<img src="assets/hero-original.svg" alt="Artist Signatures API original illustration, no third-party imagery" width="100%" />
 
 <br />
 
@@ -16,29 +16,23 @@ An independent, self-hosted API that discovers artist-signature images from publ
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES%20Modules-F7DF1E?logo=javascript&logoColor=black&style=for-the-badge&labelColor=111827)](src/worker.js)
 [![MIT License](https://img.shields.io/badge/Code-MIT-987AE8?style=for-the-badge&labelColor=111827)](LICENSE)
 
-**[Preview](#preview) · [Features](#features) · [Quick Start](#quick-start) · [API](#api-reference) · [Credits](#credits)**
+**[About](#about) · [Features](#features) · [Quick Start](#quick-start) · [API](#api-reference) · [Credits](#credits)**
 
 [**🇧🇷 Português**](docs/INSTALL.pt-BR.md)
 
 </div>
 
 > [!NOTE]
-> Independent community project. Compatible with [BitChord](https://github.com/kushagrasinghx/BitChord), but **not affiliated with, sponsored by, or endorsed by** BitChord or its developers.
+> Independent community project. Compatible with [BitChord](https://github.com/kushagrasinghx/BitChord), but **not affiliated with, sponsored by, or endorsed by** BitChord or its developers. All branding here is original and does not use the BitChord logo.
 
 ---
 
-## Preview
+## About
 
-<div align="center">
-  <img src="assets/BannerPreview.png" alt="Reserved space for three real artist profiles with visible signatures" width="100%" />
+A small, independent Cloudflare Worker that finds candidate artist-signature image URLs from public sources for BitChord's optional artist-signature feature.
 
-</div>
+**No artist photos or BitChord interface assets are bundled with this repository.** Results reference third-party images which have their own licensing conditions. See [sources and image rights](docs/SOURCES.md).
 
-<!-- Replace placeholders later:
-1. Put the finished banner at assets/banner.png and point the first <img> to it.
-2. Put your artist screenshots in assets/preview/ and replace the gallery image above.
-3. Keep attribution notes for app UI and image credits in docs/SOURCES.md.
--->
 
 ---
 
@@ -163,8 +157,7 @@ The tests mock upstream services; they do not test your Cloudflare account or th
 
 ```text
 src/worker.js                 Cloudflare Workers API
-assets/banner-placeholder.svg Temporary header illustration
-assets/preview-placeholder.svg Temporary screenshot layout
+assets/hero-original.svg      Original project illustration
 docs/README.en.md             English setup details
 docs/INSTALL.pt-BR.md         Brazilian Portuguese guide
 docs/SOURCES.md               Credits and image-rights notes
