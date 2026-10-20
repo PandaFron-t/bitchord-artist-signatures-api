@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 640" role="img" aria-labelledby="title desc">
+<title id="title">Artist Signatures API — independent project</title>
+<desc id="desc">Original abstract graphic with coral gradient, stylized ink strokes, and three technology cards. No third-party photos, app UI or brand marks.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1=".15" x2="1" y2="1"><stop offset="0" stop-color="#FFB5AA"/><stop offset=".55" stop-color="#F47D85"/><stop offset="1" stop-color="#DB526A"/></linearGradient>
+  <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#292638"/><stop offset="1" stop-color="#171A2D"/></linearGradient>
+  <linearGradient id="ink" x1="0" y1="0" x2="1" y2=".7"><stop stop-color="#FFF5F1"/><stop offset="1" stop-color="#FFCED4"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="17" flood-opacity=".23"/></filter>
+  <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#fff" stroke-opacity=".07"/></pattern>
+</defs>
+<rect width="1600" height="640" fill="url(#bg)"/>
+<rect width="1600" height="640" fill="url(#grid)"/>
+<circle cx="1440" cy="-60" r="370" fill="#FFD4C4" opacity=".15"/>
+<circle cx="910" cy="680" r="330" fill="#F3E9FB" opacity=".11"/>
+<g font-family="Arial, Helvetica, sans-serif">
+  <g transform="translate(84 70)">
+    <rect width="68" height="68" rx="19" fill="#1B1C2A"/>
+    <path d="M18 23c11 8 20 8 32 0M18 34c11 8 20 8 32 0M18 45c11 8 20 8 32 0" fill="none" stroke="#FFF4F0" stroke-width="4.8" stroke-linecap="round"/>
+    <text x="88" y="31" fill="#171727" font-weight="700" font-size="27" letter-spacing="1">ARTIST SIGNATURES</text>
+    <text x="88" y="59" fill="#45313D" font-size="21">Independent API</text>
+  </g>
+  <text x="83" y="274" fill="#1A1923" font-weight="800" font-size="78" letter-spacing="-2">Make music</text>
+  <text x="83" y="360" fill="#1A1923" font-weight="800" font-size="78" letter-spacing="-2">more personal.</text>
+  <text x="88" y="414" fill="#332333" font-size="26">Discover artist signatures through public data.</text>
+  <g font-size="18" font-weight="600">
+    <rect x="88" y="463" width="165" height="42" rx="21" fill="#212131" fill-opacity=".92"/><text x="170.5" y="490" text-anchor="middle" fill="#FFF5F2">Self-hosted</text>
+    <rect x="265" y="463" width="174" height="42" rx="21" fill="#212131" fill-opacity=".92"/><text x="352" y="490" text-anchor="middle" fill="#FFF5F2">Open source</text>
+    <rect x="451" y="463" width="200" height="42" rx="21" fill="#212131" fill-opacity=".92"/><text x="551" y="490" text-anchor="middle" fill="#FFF5F2">No API keys</text>
+  </g>
+  <text x="88" y="581" fill="#4E2634" font-size="18">Works with BitChord · Independently maintained</text>
+</g>
+<g filter="url(#shadow)">
+  <g transform="translate(800 100) rotate(-9 230 230)">
+    <rect x="0" y="0" width="460" height="390" rx="37" fill="url(#panel)" stroke="#FFF5F4" stroke-opacity=".55" stroke-width="4"/>
+    <text x="40" y="59" font-family="Arial" font-size="19" fill="#D4CFE6" letter-spacing="3">SIGNATURE SOURCE</text>
+    <path d="M48 209c48-53 59 67 108-22s64 45 99-7c51-74 75 67 149-28M60 253c103-12 186-22 323-8" fill="none" stroke="url(#ink)" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="72" cy="316" r="10" fill="#FE8F98"/>
+    <text x="94" y="324" font-family="Arial" font-size="18" fill="#CFCADE">Public image references</text>
+  </g>
+  <g transform="translate(1260 250) rotate(11 145 165)">
+    <rect width="280" height="285" rx="32" fill="url(#panel)" stroke="#FFF5F4" stroke-opacity=".62" stroke-width="4"/>
+    <text x="31" y="57" font-family="Arial" fill="#D4CFE6" font-size="16" letter-spacing="2">LOOKUP API</text>
+    <rect x="30" y="85" width="220" height="56" rx="15" fill="#39364E"/>
+    <circle cx="63" cy="113" r="11" fill="none" stroke="#FDA2A6" stroke-width="4"/>
+    <path d="M71 121l13 13" fill="none" stroke="#FDA2A6" stroke-width="4" stroke-linecap="round"/>
+    <rect x="101" y="107" width="104" height="10" rx="5" fill="#D9D3E8" opacity=".7"/>
+    <path d="M40 195l34 31 50-60" fill="none" stroke="#F5B5B4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="141" y="219" font-family="Arial" fill="#E8E4F0" font-size="20">Found</text>
+  </g>
+</g>
+</svg>
