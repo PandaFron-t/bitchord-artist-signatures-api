@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner-placeholder.svg" alt="Artist Signatures API — banner concept; real BitChord screenshots coming soon" width="100%" />
+<img src="assets/BannerAPI.png" alt="Artist Signatures API — banner concept; real BitChord screenshots coming soon" width="100%" />
 
 <br />
 
