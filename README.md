@@ -30,7 +30,7 @@ An independent, self-hosted API that discovers artist-signature images from publ
 ## Preview
 
 <div align="center">
-  <img src="assets/preview-placeholder.svg" alt="Reserved space for three real artist profiles with visible signatures" width="100%" />
+  <img src="assets/BannerPreview.png" alt="Reserved space for three real artist profiles with visible signatures" width="100%" />
   <sub>Visual placeholders — real BitChord artist-profile screenshots will replace these images.</sub>
 </div>
 
